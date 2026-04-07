@@ -1,10 +1,9 @@
 aid: sepasoft
 name: Sepasoft
 description: >-
-  A manufacturing execution system (MES) is used to control, track, and document
-  the transformation of raw materials into finished goods in real-time. MES
-  systems are capable of tracking production by the second and, in some cases,
-  less than one second. 
+  A manufacturing execution system (MES) is used to control, track, and document the
+  transformation of raw materials into finished goods in real-time. MES systems are
+  capable of tracking production by the second and, in some cases, less than one second.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -20,10 +19,10 @@ apis:
   - aid: sepasoft:sepasoft
     name: Sepasoft
     description: >-
-      A manufacturing execution system (MES) is used to control, track, and
-      document the transformation of raw materials into finished goods in
-      real-time. MES systems are capable of tracking production by the second
-      and, in some cases, less than one second. 
+      A manufacturing execution system (MES) is used to control, track, and document
+      the transformation of raw materials into finished goods in real-time. MES systems
+      are capable of tracking production by the second and, in some cases, less than
+      one second.
     humanURL: ' https://www.sepasoft.com/'
     tags:
       - API
