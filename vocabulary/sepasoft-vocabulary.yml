@@ -1,0 +1,116 @@
+vocabulary:
+  name: Sepasoft MES Vocabulary
+  description: >-
+    Key industrial and manufacturing concepts used by Sepasoft's Manufacturing
+    Execution System (MES) platform, built on the Ignition® platform by
+    Inductive Automation.
+  version: "1.0"
+  terms:
+    - term: Manufacturing Execution System (MES)
+      definition: >-
+        A software system that controls, tracks, and documents the transformation
+        of raw materials into finished goods in real-time, capable of tracking
+        production at the second level or finer granularity.
+      tags: [core, system, manufacturing]
+
+    - term: Overall Equipment Effectiveness (OEE)
+      definition: >-
+        A manufacturing KPI that measures productivity as the product of
+        Availability, Performance, and Quality ratios. A score of 100% means
+        perfect production: manufacturing only good parts, as fast as possible,
+        with no stop time.
+      tags: [kpi, metrics, lean-manufacturing]
+
+    - term: Batch Procedure
+      definition: >-
+        An ISA-88-aligned workflow that defines the sequence of operations
+        required to produce a batch of material, including phases, operations,
+        and unit procedures orchestrated through the MES.
+      tags: [batch, isa88, workflow]
+
+    - term: Track and Trace
+      definition: >-
+        The capability to follow the path of a product or material through every
+        stage of production, including lot/serial number tracking, genealogy
+        trees, and chain-of-custody reporting for compliance and quality.
+      tags: [traceability, compliance, quality]
+
+    - term: Statistical Process Control (SPC)
+      definition: >-
+        A method of quality control that uses statistical methods to monitor and
+        control a manufacturing process. Control charts detect out-of-control
+        conditions so corrective action can be taken before defects occur.
+      tags: [quality, statistics, control-chart]
+
+    - term: Unified Namespace (UNS)
+      definition: >-
+        A centralized, hierarchical data architecture pattern for industrial
+        systems where all devices, systems, and applications publish and subscribe
+        to a single shared context, typically built over MQTT/Sparkplug B.
+      tags: [architecture, iiot, mqtt, sparkplug]
+
+    - term: Equipment State
+      definition: >-
+        A discrete classification of a piece of equipment at a given moment in
+        time (e.g., Running, Starved, Blocked, Idle, Down), used to calculate
+        availability and analyze downtime causes.
+      tags: [equipment, downtime, availability, oee]
+
+    - term: Work Order
+      definition: >-
+        A formal instruction to produce a specified quantity of a product,
+        containing routing, material requirements, and scheduling information.
+        The MES accepts, executes, and closes work orders in coordination with
+        ERP systems.
+      tags: [scheduling, production, erp]
+
+    - term: ERP Connectivity
+      definition: >-
+        Integration between the MES layer and Enterprise Resource Planning
+        systems (SAP, Oracle, etc.) to exchange production orders, inventory
+        transactions, labor data, and quality results bidirectionally.
+      tags: [integration, erp, sap, oracle]
+
+    - term: ISA-95
+      definition: >-
+        An international standard (ANSI/ISA-95) defining the integration between
+        enterprise and control systems, including a hierarchical model for
+        production scheduling, dispatching, and execution data exchange between
+        MES and ERP layers.
+      tags: [standard, isa95, integration]
+
+    - term: Ignition Platform
+      definition: >-
+        The SCADA/MES development platform by Inductive Automation on which
+        Sepasoft's MES modules are built, providing tag-based data access,
+        OPC-UA connectivity, and a low-code scripting environment.
+      tags: [platform, scada, ignition, inductive-automation]
+
+    - term: Downtime Analysis
+      definition: >-
+        The process of recording, categorizing, and analyzing equipment stop
+        events to identify root causes, calculate losses, and drive continuous
+        improvement initiatives such as autonomous and planned maintenance.
+      tags: [downtime, reliability, continuous-improvement]
+
+    - term: Recipe Management
+      definition: >-
+        The creation, versioning, and controlled deployment of manufacturing
+        formulas and process parameters to equipment, ensuring consistent product
+        quality and regulatory compliance across production runs.
+      tags: [recipe, quality, compliance, change-management]
+
+    - term: Carbon Emissions Reduction
+      definition: >-
+        MES-driven visibility into energy consumption and waste per production
+        order, enabling manufacturers to identify inefficiencies and reduce
+        their carbon footprint through data-driven operational decisions.
+      tags: [sustainability, energy, emissions, esg]
+
+    - term: Low-Code Software
+      definition: >-
+        A development approach used by Sepasoft and the Ignition platform that
+        minimizes hand-written code, allowing manufacturing engineers and
+        integrators to configure MES applications through visual tools and
+        drag-and-drop components.
+      tags: [low-code, development, platform, configuration]

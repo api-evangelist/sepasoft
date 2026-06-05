@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "mes": "https://www.sepasoft.com/vocab/mes#",
+    "ignition": "https://inductiveautomation.com/vocab/ignition#",
+    "iso": "https://www.iso.org/vocab/",
+
+    "Sepasoft": {
+      "@id": "schema:Organization",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "description": "schema:description",
+    "industry": "schema:industry",
+    "foundingDate": "schema:foundingDate",
+    "contactPoint": "schema:contactPoint",
+    "email": "schema:email",
+
+    "ManufacturingExecutionSystem": {
+      "@id": "mes:ManufacturingExecutionSystem",
+      "@type": "@id"
+    },
+    "ProductionOrder": {
+      "@id": "mes:ProductionOrder",
+      "@type": "@id"
+    },
+    "WorkOrder": {
+      "@id": "mes:WorkOrder",
+      "@type": "@id"
+    },
+    "EquipmentState": {
+      "@id": "mes:EquipmentState",
+      "@type": "@id"
+    },
+    "OEE": {
+      "@id": "mes:OverallEquipmentEffectiveness",
+      "@type": "@id"
+    },
+    "BatchProcedure": {
+      "@id": "mes:BatchProcedure",
+      "@type": "@id"
+    },
+    "TrackAndTrace": {
+      "@id": "mes:TrackAndTrace",
+      "@type": "@id"
+    },
+    "SPC": {
+      "@id": "mes:StatisticalProcessControl",
+      "@type": "@id"
+    },
+    "UnifiedNamespace": {
+      "@id": "mes:UnifiedNamespace",
+      "@type": "@id"
+    },
+    "ERPConnectivity": {
+      "@id": "mes:ERPConnectivity",
+      "@type": "@id"
+    },
+
+    "availability": "mes:availability",
+    "performance": "mes:performance",
+    "quality": "mes:quality",
+    "downtime": "mes:downtime",
+    "throughput": "mes:throughput",
+    "lotNumber": "mes:lotNumber",
+    "serialNumber": "mes:serialNumber",
+    "workCenter": "mes:workCenter",
+    "productionLine": "mes:productionLine",
+    "recipe": "mes:recipe",
+    "materialDefinition": "mes:materialDefinition",
+    "equipmentId": "mes:equipmentId",
+    "startTime": {
+      "@id": "mes:startTime",
+      "@type": "schema:DateTime"
+    },
+    "endTime": {
+      "@id": "mes:endTime",
+      "@type": "schema:DateTime"
+    },
+    "status": "mes:status",
+    "quantity": {
+      "@id": "mes:quantity",
+      "@type": "schema:QuantitativeValue"
+    },
+
+    "IgnitionPlatform": {
+      "@id": "ignition:Platform",
+      "@type": "@id"
+    },
+    "SCADATag": {
+      "@id": "ignition:SCADATag",
+      "@type": "@id"
+    },
+
+    "ISA88": {
+      "@id": "iso:ISA88",
+      "@type": "@id"
+    },
+    "ISA95": {
+      "@id": "iso:ISA95",
+      "@type": "@id"
+    }
+  }
+}
