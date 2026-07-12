@@ -30,3 +30,8 @@ apis:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+common:
+- type: TrustCenter
+  url: security/sepasoft-trust-center.yml
+- type: DomainSecurity
+  url: security/sepasoft-domain-security.yml
