@@ -3,14 +3,14 @@ kin_checks:
   slug: sepasoft
   schema_version: 0.15.1
   scored_at: '2026-08-27'
-  run_ts: 2026-08-27T103455
+  run_ts: 2026-08-27T132314
   note: Actionable checks only (missed + partial). earned/na are every other check
     in rubric/scoring-0.15.1.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 15
+    earned: 18
     partial: 5
-    missed: 68
+    missed: 65
     na: 42
   checks:
   - id: tags_present
@@ -18,10 +18,6 @@ kin_checks:
   - id: multiple_apis
     status: missed
   - id: base_url_per_api
-    status: missed
-  - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -132,8 +128,6 @@ kin_checks:
   - id: event_surface_described
     status: missed
   - id: agent_skills
-    status: missed
-  - id: well_known_catalog
     status: missed
   - id: consent_identity
     status: missed
