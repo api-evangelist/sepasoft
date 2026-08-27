@@ -3,137 +3,186 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Sepasoft
 providerId: sepasoft
+generated: '2026-08-27'
+method: searched
+source: https://www.sepasoft.com/pricing-mes/
+docs:
+  - https://www.sepasoft.com/pricing-mes/
+  - https://www.sepasoft.com/pricing-sepaiq/
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags: []
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+modified: '2026-08-27'
+tags:
+  - Pricing
+  - Licensing
+  - MES
+description: >-
+  Sepasoft publishes list prices openly on two pricing pages. Licensing is per-module and
+  per-server or per-physical-production-site, not per API call - there is no metered API
+  plan, no request quota and no free developer tier, because Sepasoft sells Ignition
+  modules that run on the customer's own gateway rather than a hosted API. The 2026-05-04
+  scaffold that previously occupied this file (invented Free/Pro tiers with request quotas)
+  has been replaced with the provider's published numbers.
+currency: USD
+billing_note: >-
+  MES module licences are published as one-time list prices per server or per site; support
+  plans are an annual percentage uplift. SepaIQ is published as an annual subscription.
+  All prices are provider-stated estimates excluding taxes and fees.
+plan_count: 16
 plans:
-  - id: sepasoft-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Sepasoft API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Sepasoft
-  - id: sepasoft-pro
-    name: Professional
-    type: paid
-    description: Production tier for Sepasoft. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Sepasoft
-  - id: sepasoft-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Sepasoft. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Sepasoft
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+  - id: mes-oee-downtime
+    name: OEE Downtime Module
+    family: MES Platform
+    price: '22700.00'
+    currency: USD
+    period: one-time
+    unit: physical production site licence
+    included: Unlimited OEE calculations per physical production site licence
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-batch-procedure
+    name: Batch Procedure Module
+    family: MES Platform
+    price: '35000.00'
+    currency: USD
+    period: one-time
+    unit: server licence
+    included: Unlimited active batch recipes per server licence
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-track-trace
+    name: Track & Trace Module
+    family: MES Platform
+    price: '22700.00'
+    currency: USD
+    period: one-time
+    unit: physical production site licence
+    included: Unlimited active operations per physical production site licence
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-spc
+    name: SPC Module
+    family: MES Platform
+    price: '9100.00'
+    currency: USD
+    period: one-time
+    unit: physical production site licence
+    included: Unlimited sample collection and SPC rule monitoring per site
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-settings-changeover
+    name: Settings & Changeover Module
+    family: MES Platform
+    price: '9100.00'
+    currency: USD
+    period: one-time
+    unit: physical production site licence
+    included: Unlimited active recipes per physical production site licence
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-business-connector
+    name: Business Connector
+    family: Business Connector Suite
+    price: '5400.00'
+    currency: USD
+    period: one-time
+    unit: server installation
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-web-services
+    name: Web Services Module
+    family: Business Connector Suite
+    price: '5200.00'
+    currency: USD
+    period: one-time
+    unit: server installation
+    note: >-
+      This is the module that carries Sepasoft's API surface - it turns the customer's
+      Ignition Gateway into a REST and SOAP provider and consumer.
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-sap-interface
+    name: Interface for SAP ERP
+    family: Business Connector Suite
+    price: '16200.00'
+    currency: USD
+    period: one-time
+    unit: server installation
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: mes-enterprise-central
+    name: MES Enterprise Central Server
+    family: Enterprise
+    price: '14200.00'
+    currency: USD
+    period: one-time
+    requires: At least one site-level module
+    source: https://www.sepasoft.com/pricing-mes/
+  - id: sepaiq-platform
+    name: SepaIQ Platform
+    family: SepaIQ
+    price: '2500.00'
+    currency: USD
+    period: year
+    required: true
+    note: Required base for any SepaIQ add-on module.
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-advanced-analytics
+    name: SepaIQ Advanced Analytics
+    family: SepaIQ
+    price: '15500.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-incoming-connector
+    name: SepaIQ Incoming Connector
+    family: SepaIQ
+    price: '5000.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-outgoing-connector
+    name: SepaIQ Outgoing Connector
+    family: SepaIQ
+    price: '5000.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-enterprise
+    name: SepaIQ Enterprise
+    family: SepaIQ
+    price: '10000.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-machine-learning
+    name: SepaIQ Machine Learning
+    family: SepaIQ
+    price: '5000.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - id: sepaiq-llm
+    name: SepaIQ LLM
+    family: SepaIQ
+    price: '2000.00'
+    currency: USD
+    period: year
+    source: https://www.sepasoft.com/pricing-sepaiq/
+support_plans:
+  - name: BasicCare
+    annual_uplift_percent: 16
+  - name: TotalCare
+    annual_uplift_percent: 20
+  - name: PriorityCare
+    annual_uplift_percent: 24
+discounts:
+  - name: Additional servers (1-9 extra)
+    discount_percent: 50
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - name: Development licences (1-10 servers)
+    discount_percent: 50
+    source: https://www.sepasoft.com/pricing-sepaiq/
+  - name: Test licences (1-10 servers)
+    discount_percent: 50
+    source: https://www.sepasoft.com/pricing-sepaiq/
+one_time_services:
+  - name: SepaIQ onboarding and training
+    price: '5000.00'
+    currency: USD
+    source: https://www.sepasoft.com/pricing-sepaiq/
+free_tier: false
+trial: false
+notes:
+  - No metered or per-request API pricing exists; no API key is sold.

@@ -1,0 +1,93 @@
+# Sepasoft
+
+> Sepasoft builds Manufacturing Execution System (MES) software that ships as modules for
+> the Inductive Automation Ignition platform. The suite covers OEE and downtime tracking,
+> track and trace, batch procedure control (ISA-88), SPC, settings and changeover, document
+> management, ERP integration through the Business Connector (B2MML / ISA-95) and an SAP
+> interface, plus SepaIQ for manufacturing analytics, machine learning and LLM features.
+
+## What "the Sepasoft API" actually is
+
+Sepasoft operates no hosted, public API and issues no API keys. Its Web Services module
+turns the CUSTOMER'S OWN Ignition Gateway into a REST and SOAP endpoint - both provider
+and consumer. Endpoints are authored by the operator in the Ignition Designer and served
+from that gateway, so every base URL is deployment-specific:
+
+- REST: https://{ignition-gateway-host}:{port}/main/system/ws/rest/{resource_name}
+- REST (nested): https://{ignition-gateway-host}:{port}/main/system/ws/rest/{folder}/{resource_name}
+- SOAP: https://{ignition-gateway-host}:{port}/main/system/ws/soap/{resource_name}
+- WSDL: https://{ignition-gateway-host}:{port}/main/system/ws/soap/{resource_name}?wsdl
+
+Methods: GET, POST, PUT, DELETE. Response format: JSON or XML, chosen per endpoint.
+Auth on the provider side: HTTP Basic against an Ignition User Source, optionally scoped
+by required role(s). Missing credentials -> 401 + WWW-Authenticate; wrong credentials ->
+403; no handler for the method -> 405; script error -> 500.
+Auth on the consumer side: Basic, Digest, NTLM, mutual TLS (JKS keystore/truststore), and
+OAuth 2.0 client credentials against an authorization server the operator runs.
+
+No OpenAPI, AsyncAPI, GraphQL SDL, Postman collection or JSON Schema is published by
+Sepasoft. The SOAP WSDL is generated at runtime, per endpoint, on the customer's gateway.
+
+## Documentation
+
+- MES User Manual: https://docs.sepasoft.com/
+- Web Services module: https://docs.sepasoft.com/articles/user-manual/web-services
+- RESTful Endpoints: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+- SOAP Endpoints: https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+- RESTful Configuration (consumer): https://docs.sepasoft.com/articles/user-manual/restful-configuration
+- OAuth 2.0 client credentials for RESTful consumers: https://docs.sepasoft.com/articles/user-manual/configuring-oauth-client-credentials-for-restful-consumers
+- Consumers (SSL / keystore): https://docs.sepasoft.com/articles/user-manual/consumers
+- system.ws scripting functions: https://docs.sepasoft.com/articles/user-manual/system-ws
+- Business Connector and Web Services: https://docs.sepasoft.com/articles/user-manual/business-connector-and-web-services
+- Knowledge Base: https://docs.sepasoft.com/articles/knowledge-base/mes-3-0-knowledge-base
+
+Every docs article also serves a markdown twin: append `.md` to the article URL.
+
+## Releases
+
+- Downloads and version matrix: https://www.sepasoft.com/downloads/
+- MES 3.0 service pack release notes: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+- MES 4.0 service pack release notes: https://docs.sepasoft.com/articles/release-notes-publication/mes-4-0-current-service-pack-sp-release-notes
+
+Current: 3.81.13 SP1 (Ignition 8.1) and 4.83.3 SP1 (Ignition 8.3), both 2026-07-31.
+
+## Commercial
+
+- MES pricing: https://www.sepasoft.com/pricing-mes/
+- SepaIQ pricing: https://www.sepasoft.com/pricing-sepaiq/
+- Products: https://www.sepasoft.com/products/
+- Web Services module: https://www.sepasoft.com/products/web-services/
+- Business Connector Suite: https://www.sepasoft.com/products/sepasoft-business-connector/
+- Terms of Use: https://www.sepasoft.com/terms-of-use/
+- Privacy Policy: https://www.sepasoft.com/privacy-policy/
+- Trust center (SOC 2, ISO/IEC 27001): https://trust.sepasoft.com/
+
+Licensing is per module, per server or per physical production site - one-time list prices
+for the MES modules, annual subscription for SepaIQ. There is no metered API plan, no
+request quota and no free developer tier.
+
+## Support
+
+- Support: https://www.sepasoft.com/support/
+- Learn: https://www.sepasoft.com/learn/
+- Video library: https://www.sepasoft.com/video-library/
+- Blog: https://www.sepasoft.com/blog/
+- Email: support@sepasoft.com  ·  Phone: +1 (800) 207-5506 / +1 (916) 939-1684
+- Hours: Monday-Friday, 7:30AM-5PM Pacific
+
+## Standards
+
+- ISA-95 / IEC 62264 via B2MML in the Business Connector (MES 3.0 and 4.0; not MES 2.0)
+- ISA-88 batch control in the Batch Procedure module
+- SOAP 1.1/1.2, WSDL 1.1, W3C XML Schema data types on the SOAP surface
+- OAuth 2.0 client credentials (consumer side only)
+
+## Notes for agents
+
+- There is nothing here an agent can call directly. Any callable surface is one a Sepasoft
+  customer built on their own gateway, behind their own network and their own credentials.
+- https://docs.sepasoft.com/llms.txt currently serves the unmodified ClickHelp template
+  ("This is a template showing typical llms.txt file structure") with placeholder
+  sepasoft.clickhelp.co URLs that do not resolve to real pages. Do not follow it.
+- No /.well-known document is served on any Sepasoft host; docs.sepasoft.com and
+  help.sepasoft.com answer 200 with an HTML shell for every /.well-known/* path.

@@ -1,0 +1,153 @@
+generated: '2026-08-27'
+method: searched
+source: https://docs.sepasoft.com/articles/user-manual/web-services
+provider: Sepasoft
+providerId: sepasoft
+summary: >-
+  Sepasoft publishes no machine-readable API contract, so nothing here is asserted from a
+  spec file. Every entry below is graded against the provider's own documentation and is
+  marked with what kind of evidence backs it. Where a standard is supported by the PRODUCT
+  but not declared in any published contract, conforms is recorded honestly against the
+  documented capability, and the note says the evidence is prose, not a contract.
+contract_evidence: none
+entries:
+  - id: rest
+    name: REST over HTTP
+    conforms: true
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+        note: >-
+          RESTful endpoint resources mounted at /main/system/ws/rest, GET/POST/PUT/DELETE,
+          JSON or XML responses, HTTP status semantics for 401/403/405/500.
+  - id: soap
+    name: SOAP 1.1 / 1.2
+    conforms: true
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+        note: >-
+          SOAP endpoint resources mounted at /main/system/ws/soap; the docs state each
+          operation link shows its sample SOAP 1.1/1.2 request and response.
+  - id: wsdl
+    name: WSDL 1.1
+    conforms: true
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+        note: >-
+          The module auto-generates a WSDL document per SOAP endpoint, served at
+          ?wsdl on the endpoint URL, and supports Import WSDL File / Export WSDL File.
+          The WSDL is generated at runtime on the CUSTOMER'S gateway from operations and
+          types the operator defines, so there is no Sepasoft-published WSDL to harvest.
+  - id: xml-schema
+    name: W3C XML Schema (XSD) data types
+    conforms: true
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+        note: >-
+          SOAP endpoint Types are built from the XSD built-in type set (string, decimal,
+          dateTime, base64Binary, anyURI, QName, NMTOKENS, IDREFS, ...) with
+          MinOccurs / MaxOccurs / Nillable per member.
+  - id: oauth2
+    name: OAuth 2.0 (RFC 6749) client credentials grant
+    conforms: true
+    role: consumer-only
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/configuring-oauth-client-credentials-for-restful-consumers
+        note: >-
+          The RESTful consumer supports the client credentials grant against an
+          operator-run authorization server (Keycloak is the documented reference), and
+          consumes bearer JWTs. Sepasoft itself issues no tokens and runs no
+          authorization server, so there is no OIDC discovery document to probe.
+  - id: oidc
+    name: OpenID Connect discovery
+    conforms: false
+    evidence:
+      - type: probe
+        url: https://www.sepasoft.com/.well-known/openid-configuration
+        status: 404
+      - type: probe
+        url: https://docs.sepasoft.com/.well-known/openid-configuration
+        status: 200
+        note: Soft-404 HTML shell, not a discovery document. See well-known/sepasoft-well-known.yml.
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+        note: Only bare HTTP status codes are documented; no problem+json envelope.
+  - id: idempotency
+    name: Idempotency keys
+    conforms: false
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+        note: No Idempotency-Key header or replay protection is documented.
+  - id: pagination
+    name: Documented pagination convention
+    conforms: false
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+        note: No framework pagination; paging would be authored per endpoint script.
+  - id: mutual-tls
+    name: Mutual TLS client authentication
+    conforms: true
+    role: consumer
+    evidence:
+      - type: docs
+        url: https://docs.sepasoft.com/articles/user-manual/consumers
+        note: SSL client authentication with JKS keystore/truststore configuration.
+domain_standards:
+  note: >-
+    Sepasoft's market is manufacturing operations, whose standards family is ISA-95 /
+    IEC 62264 (with B2MML as its XML binding) and ISA-88 for batch. Sepasoft documents
+    support for these in the product, but does NOT declare them inside any published
+    machine-readable contract - there is no contract - so these are recorded as
+    documented product conformance, not contract-declared conformance.
+  entries:
+    - id: isa-95
+      name: ANSI/ISA-95 (IEC/ISO 62264) Enterprise-Control System Integration
+      conforms: true
+      declared_in_contract: false
+      evidence:
+        - type: docs
+          url: https://www.sepasoft.com/products/sepasoft-business-connector/
+          note: >-
+            Sepasoft states the Business Connector Suite leverages B2MML, the XML
+            implementation of the ISA-95 object models, to integrate MES with ERP.
+    - id: b2mml
+      name: B2MML (Business To Manufacturing Markup Language)
+      conforms: true
+      declared_in_contract: false
+      evidence:
+        - type: docs
+          url: https://docs.sepasoft.com/articles/user-manual/business-connector-and-web-services
+          note: >-
+            "MES 3.0 and MES 4.0: Supports the ability to create MES objects using B2MML.
+            MES 2.0: Creating MES objects using B2MML is not supported." - i.e. the
+            supported-version boundary is itself published.
+    - id: isa-88
+      name: ANSI/ISA-88 Batch Control
+      conforms: true
+      declared_in_contract: false
+      evidence:
+        - type: docs
+          url: https://www.sepasoft.com/products/
+          note: >-
+            The Batch Procedure module is documented as adding batch, continuous and
+            general procedure control based on the ISA-88 standard.
+compliance:
+  certifications:
+    - SOC 2
+    - ISO/IEC 27001
+  source: https://trust.sepasoft.com/
+  see: security/sepasoft-trust-center.yml
+  note: >-
+    Certifications are published on the Sepasoft trust center. The trust center answers 403
+    to a plain crawler; the certifications recorded here come from the earlier probed
+    trust-center artifact in this repo.

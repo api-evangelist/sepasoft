@@ -1,0 +1,84 @@
+generated: '2026-08-27'
+method: probed
+source: live GET of /.well-known/* on every Sepasoft host named in apis.yml
+note: >-
+  Every path probed returned either a WordPress 404 (www.sepasoft.com) or a
+  soft-200 catch-all. help.sepasoft.com answers 200 with an identical 290,318-byte
+  "We've Moved" HTML page for EVERY path including a nonsense control path, and
+  docs.sepasoft.com (ClickHelp) answers 200 with a ~19.5KB login/404 HTML shell for
+  every unknown path, again including the control. No .well-known document is
+  actually served, so NO WellKnown or SecurityTxt pointer is emitted.
+hit_count: 0
+hosts:
+  - host: https://www.sepasoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://docs.sepasoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        soft_404: true
+        bytes: 19565
+      - path: /.well-known/openid-configuration
+        status: 200
+        soft_404: true
+        bytes: 19581
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        soft_404: true
+        bytes: 19593
+      - path: /.well-known/api-catalog
+        status: 200
+        soft_404: true
+        bytes: 19563
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        soft_404: true
+        bytes: 19569
+      - path: /.well-known/agent-card.json
+        status: 200
+        soft_404: true
+        bytes: 19571
+      - path: /.well-known/agent.json
+        status: 200
+        soft_404: true
+        bytes: 19561
+      - path: /.well-known/thisshouldnotexist-control
+        status: 200
+        soft_404_control: true
+        bytes: 19593
+  - host: https://help.sepasoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        soft_404: true
+        bytes: 290318
+      - path: /.well-known/agent-card.json
+        status: 200
+        soft_404: true
+        bytes: 290318
+      - path: /.well-known/agent.json
+        status: 200
+        soft_404: true
+        bytes: 290318
+      - path: /.well-known/api-catalog
+        status: 200
+        soft_404: true
+        bytes: 290318
+      - path: /.well-known/thisshouldnotexist-control
+        status: 200
+        soft_404_control: true
+        bytes: 290318

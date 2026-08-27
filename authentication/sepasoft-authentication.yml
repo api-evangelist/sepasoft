@@ -1,0 +1,80 @@
+generated: '2026-08-27'
+method: searched
+source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+docs:
+  - https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+  - https://docs.sepasoft.com/articles/user-manual/consumers
+  - https://docs.sepasoft.com/articles/user-manual/configuring-oauth-client-credentials-for-restful-consumers
+provider: Sepasoft
+providerId: sepasoft
+summary: >-
+  Sepasoft does not operate a hosted API. Its Web Services module turns the CUSTOMER'S
+  own Ignition Gateway into a REST/SOAP provider and consumer, so every auth decision
+  below is configured per deployment by the operator, not issued by Sepasoft. There are
+  no Sepasoft-issued API keys, no Sepasoft OAuth authorization server, and no Sepasoft
+  token endpoint. Documented as searched from the Sepasoft MES User Manual.
+deployment_model: customer-hosted
+schemes:
+  - id: http-basic-provider
+    type: http
+    scheme: basic
+    role: provider
+    surface: RESTful Endpoints and SOAP Endpoints served by the customer's Ignition Gateway
+    description: >-
+      When "Basic" is selected on a RESTful endpoint resource, the endpoint requires HTTP
+      BASIC authentication before the endpoint script executes.
+    identity_store: Ignition User Source (Gateway > Config > Security > Users, Roles > User Sources)
+    authorization: >-
+      Optional "Required role(s)" field. If roles are listed the caller must hold at least
+      one of them; multiple roles are comma separated. Blank means every role may call it.
+    challenges:
+      missing_credentials: 401 with a WWW-Authenticate header
+      invalid_credentials: 403
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - id: transport-ssl-provider
+    type: transport
+    role: provider
+    description: >-
+      "Redirect to SSL" option on a RESTful endpoint resource. When checked the endpoint is
+      only reachable over SSL; a plaintext HTTP request is redirected to the Gateway SSL port.
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - id: oauth2-client-credentials-consumer
+    type: oauth2
+    flow: clientCredentials
+    role: consumer
+    description: >-
+      The RESTful Web Service Consumer supports the OAuth 2.0 Client Credentials grant for
+      server-to-server calls out to third-party APIs. The Sepasoft manual's reference
+      implementation is a self-hosted Keycloak realm; Sepasoft issues no tokens itself.
+      Tokens are bearer JWTs minted by the operator's own authorization server.
+    token_endpoint: operator-supplied (no Sepasoft-hosted token endpoint exists)
+    scopes_documented: false
+    source: https://docs.sepasoft.com/articles/user-manual/configuring-oauth-client-credentials-for-restful-consumers
+  - id: http-basic-digest-ntlm-consumer
+    type: http
+    role: consumer
+    schemes:
+      - basic
+      - digest
+      - ntlm
+    description: >-
+      Outbound REST/SOAP consumer connections support Basic, Digest and NTLM authentication
+      against the remote system, plus SSL encryption on all communications.
+    source: https://www.sepasoft.com/products/web-services/
+  - id: mutual-tls-consumer
+    type: mutualTLS
+    role: consumer
+    description: >-
+      "Enable SSL client authentication" on a consumer, with a Java KeyStore (JKS) keystore
+      file + password for the client certificate and either the default `cacerts` truststore
+      or an operator-supplied JKS truststore for verifying the server certificate.
+    source: https://docs.sepasoft.com/articles/user-manual/consumers
+notes:
+  - >-
+    Because auth is configured per Ignition Gateway, there is no single documented base URL,
+    no Sepasoft-issued credential, and no published scope vocabulary. `scopes/` is therefore
+    deliberately absent rather than empty.
+  - >-
+    Endpoint scripts are authored by the operator in Jython; a missing script for an HTTP
+    method returns 405 and a script syntax error returns 500 (see errors/).

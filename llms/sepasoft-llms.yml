@@ -1,0 +1,25 @@
+generated: '2026-08-27'
+method: generated
+source: >-
+  Generated from apis.yml plus this repo's searched artifacts (conventions, authentication,
+  errors, lifecycle, changelog, plans, conformance) and the Sepasoft MES User Manual.
+provider: Sepasoft
+providerId: sepasoft
+file: sepasoft-llms.txt
+provider_published: false
+provider_probe:
+  - url: https://www.sepasoft.com/llms.txt
+    status: 404
+  - url: https://docs.sepasoft.com/llms.txt
+    status: 200
+    verdict: template-placeholder
+    note: >-
+      Serves the unmodified ClickHelp starter template, opening with "This is a template
+      showing typical llms.txt file structure, replace it with your own content" and listing
+      "My Portal" sections pointing at sepasoft.clickhelp.co/articles/project-id/* URLs.
+      It describes no Sepasoft product and none of its links resolve to real content, so it
+      was NOT saved as a searched artifact.
+  - url: https://help.sepasoft.com/llms.txt
+    status: 200
+    verdict: soft-404
+    note: Returns the 290KB "We've Moved" HTML page served for every path on that host.

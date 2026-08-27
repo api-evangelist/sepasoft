@@ -1,0 +1,108 @@
+generated: '2026-08-27'
+method: searched
+source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+docs:
+  - https://docs.sepasoft.com/articles/user-manual/web-services
+  - https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - https://docs.sepasoft.com/articles/user-manual/soap-endpoints
+  - https://docs.sepasoft.com/articles/user-manual/system-ws
+provider: Sepasoft
+providerId: sepasoft
+summary: >-
+  Cross-cutting semantics for the REST and SOAP surfaces the Sepasoft Web Services module
+  exposes ON THE CUSTOMER'S OWN Ignition Gateway. Sepasoft ships the framework and the
+  URL shape; the operator authors each endpoint's request/response contract in Jython, so
+  several conventions below are framework-level guarantees rather than a fixed API contract.
+deployment_model: customer-hosted
+url_conventions:
+  rest_mount: /main/system/ws/rest
+  rest_example: https://{ignition-gateway-host}:{port}/main/system/ws/rest/{resource_name}
+  rest_nested_example: https://{ignition-gateway-host}:{port}/main/system/ws/rest/{folder_name}/{resource_name}
+  soap_mount: /main/system/ws/soap
+  soap_example: https://{ignition-gateway-host}:{port}/main/system/ws/soap/{resource_name}
+  wsdl_url: https://{ignition-gateway-host}:{port}/main/system/ws/soap/{resource_name}?wsdl
+  note: >-
+    The resource name — and any containing folder — is part of the path. There is no
+    version segment in the path; versioning is handled by the module version, not the URL.
+http_methods:
+  supported: [GET, POST, PUT, DELETE]
+  unimplemented_method_response: 405
+  note: A method with no script defined returns 405; PATCH is not offered.
+content_negotiation:
+  response_formats: [JSON, XML]
+  selection: Configured per endpoint resource ("Data format"), not negotiated per request via Accept.
+  encodings: [UTF_8, UTF_16, ISO_8859_1, Windows_1252, ASCII]
+request_shape:
+  description: >-
+    Each do_* handler receives a single `request` dict. This is the framework's stable
+    request contract and is the closest thing Sepasoft publishes to a parameter model.
+  fields:
+    - name: request['path']
+      description: Trailing path after the endpoint resource, e.g. "/user/id/123"
+    - name: request['query']
+      description: Query parameters as a dict, e.g. {'param1':'value1'}
+    - name: request['body']
+      description: Present only on POST/PUT; the XML or JSON body converted to a dict
+    - name: request['headers']
+      description: Request headers as a dict, e.g. request['headers']['User-Agent']
+    - name: request['remote']
+      description: Sender information including the caller's address
+auth_style:
+  provider: HTTP Basic against an Ignition User Source, optionally constrained by role
+  consumer: Basic / Digest / NTLM / OAuth 2.0 client credentials / mutual TLS
+  see: authentication/sepasoft-authentication.yml
+error_envelope:
+  format: operator-defined
+  standard: none
+  rfc9457: false
+  note: >-
+    Sepasoft documents the HTTP status codes the framework itself returns (401, 403, 405,
+    500) but does not define a body envelope — the endpoint script's return value is the
+    body. RFC 9457 problem+json is not used.
+  see: errors/sepasoft-problem-types.yml
+pagination:
+  documented: false
+  note: No framework pagination. Any paging is authored by the operator inside the endpoint script.
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No Idempotency-Key header, no request-replay protection and no idempotency guidance
+    is documented for the RESTful endpoint framework. PUT/DELETE carry only their ordinary
+    HTTP semantics. NO Idempotency pointer is emitted for this provider.
+rate_limit_signaling:
+  documented: false
+  note: >-
+    No rate-limit response headers are documented. The only published throughput control
+    is a connection-pool ceiling the operator sets via system.ws scripting functions
+    (setMaxTotalConnection, setMaxConnectionPerRoute, setDefaultMaxConnectionPerRoute,
+    setIdleConnectionTimeout) and the Ignition Maker Edition limit of one simultaneous
+    connection per category. See rate-limits/sepasoft-rate-limits.yml.
+request_id_tracing:
+  documented: false
+versioning:
+  scheme: >-
+    Module version tracks the Ignition platform it targets: <platform-major>.<ignition-minor>.<build>
+    plus a service pack, e.g. 3.81.13 SP1 for Ignition 8.1 and 4.83.3 SP1 for Ignition 8.3.
+  in_url: false
+  see: changelog/sepasoft-changelog.yml
+reversibility:
+  applicable: true
+  grade: undocumented
+  summary: >-
+    Sepasoft publishes no reversal semantics for the Web Services surface. The endpoints
+    are operator-authored, so whether a given call can be taken back is a property of the
+    script the operator wrote, not of anything Sepasoft documents.
+  surfaces:
+    - surface: RESTful / SOAP endpoint writes (POST, PUT, DELETE)
+      reversal_operation: null
+      window: null
+      note: >-
+        No cancel/undo/rollback/restore operation and no reversal window is documented for
+        the framework. Not asserting one.
+  mes_object_writes:
+    note: >-
+      The MES object model does document lot/batch lifecycle operations, but no
+      Sepasoft-published contract states a reversal window, so none is recorded here.
+  dry_run_mode: undocumented
+  idempotency: false

@@ -1,0 +1,87 @@
+generated: '2026-08-27'
+method: searched
+source: https://www.sepasoft.com/downloads/
+docs:
+  - https://www.sepasoft.com/downloads/
+  - https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+  - https://www.sepasoft.com/support/
+provider: Sepasoft
+providerId: sepasoft
+versioning:
+  scheme: >-
+    <platform-major>.<ignition-minor>.<build> plus a Service Pack suffix, published per
+    Ignition platform line. Release Candidates ship as RCn ahead of the SP.
+  examples:
+    - version: 3.81.13 SP1
+      line: MES Platform 3.0 (Ignition 8.1)
+      released: '2026-07-31'
+      min_ignition: 8.1.33
+      highest_tested_ignition: 8.1.53
+    - version: 4.83.3 SP1
+      line: MES Platform 4.0 (Ignition 8.3)
+      released: '2026-07-31'
+      min_ignition: 8.3.0
+      highest_tested_ignition: 8.3.8
+  in_url: false
+  note: The REST/SOAP endpoint paths carry no version segment; the module version is the version.
+release_channels:
+  - name: Service Pack (SP)
+    description: Stable release line, published with release notes.
+  - name: Release Candidate (RC)
+    description: Pre-release build published alongside the SP line.
+    examples: ['3.81.13 RC1 (2026-02-06)', '4.83.2 RC5 (2026-04-30)']
+end_of_life:
+  documented: true
+  entries:
+    - line: MES Platform 2 on Ignition 8.1
+      last_version: 2.81.0 SP27
+      last_release: '2023-08-31'
+      state: end-of-life
+      note: No longer in monthly maintenance.
+    - line: Ignition 7.9
+      last_version: 3.79.3 SP3
+      last_release: '2022-07-08'
+      state: end-of-life
+      note: End of LTS as of 2022-06-30.
+  source: https://www.sepasoft.com/downloads/
+upgrade_policy:
+  documented: true
+  note: >-
+    Sepasoft gates the MES 4.0 upgrade behind an explicit upgrade guide - "If you are
+    upgrading to MES 4.0 from any previous version, please read the upgrade guide first
+    before installing MES 4.0."
+  source: https://www.sepasoft.com/downloads/
+deprecation_policy:
+  documented: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Sepasoft publishes end-of-life dates for whole module lines on the downloads page, but
+    no API-level deprecation policy, and no RFC 8594 Sunset/Deprecation response headers.
+    Because the policy documented is a PRODUCT end-of-life notice rather than an API
+    deprecation policy, no Deprecation pointer is emitted.
+status_page:
+  published: false
+  probed:
+    - url: https://status.sepasoft.com/
+      status: '<no response> (host does not resolve)'
+  note: >-
+    No status page exists. Sepasoft operates no hosted API surface to report on - the MES
+    modules run on the customer's own Ignition Gateway - so this is arguably N/A rather
+    than a gap. No StatusPage pointer is emitted.
+sla:
+  published: false
+  support_plans:
+    - name: BasicCare
+      annual_uplift: 16%
+    - name: TotalCare
+      annual_uplift: 20%
+      note: Includes after-hours emergency support at an hourly fee.
+    - name: PriorityCare
+      annual_uplift: 24%
+  support_hours: Monday-Friday, 7:30AM-5PM Pacific
+  source: https://www.sepasoft.com/pricing-mes/
+  note: Support plans are published with prices; no uptime or response-time SLA numbers are published.
+deprecated_operations:
+  derived_from: null
+  note: No OpenAPI exists to derive deprecated operations from.

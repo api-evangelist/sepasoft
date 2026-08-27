@@ -1,0 +1,85 @@
+generated: '2026-08-27'
+method: searched
+source: https://www.sepasoft.com/downloads/
+provider: Sepasoft
+providerId: sepasoft
+summary: >-
+  Sepasoft publishes NO client SDK in any public package registry. npm, PyPI and Maven
+  Central were queried and returned zero first-party results; pkg.go.dev, NuGet, RubyGems,
+  Packagist and crates.io are not applicable to an Ignition module vendor. What Sepasoft
+  does distribute is the module itself - signed .modl files for the Inductive Automation
+  Ignition platform, downloaded from sepasoft.com and installed into a Gateway. Those are
+  the product, not a client library, so NO SDKs pointer is emitted for this provider.
+registry_probes:
+  - registry: npm
+    query: sepasoft
+    url: https://registry.npmjs.org/-/v1/search?text=sepasoft
+    status: 200
+    results: 0
+  - registry: pypi
+    query: sepasoft
+    url: https://pypi.org/pypi/sepasoft/json
+    status: 404
+    results: 0
+  - registry: maven-central
+    query: sepasoft
+    url: https://search.maven.org/solrsearch/select?q=sepasoft
+    status: 200
+    results: 0
+packages: []
+sdk_count: 0
+distributions:
+  - name: Sepasoft MES Platform 3.0 module suite
+    registry: vendor
+    format: .modl (Ignition module)
+    url: https://www.sepasoft.com/downloads/
+    version: 3.81.13 SP1
+    published: '2026-07-31'
+    official: true
+    kind: product-module
+    platform: Inductive Automation Ignition 8.1 (min 8.1.33, highest tested 8.1.53)
+    modules:
+      - Production
+      - Batch Procedure
+      - OEE Downtime
+      - Track & Trace
+      - Settings & Changeover
+      - SPC
+      - Document Management
+      - Business Connector
+      - Web Services
+  - name: Sepasoft MES Platform 4.0 module suite
+    registry: vendor
+    format: .modl (Ignition module)
+    url: https://www.sepasoft.com/downloads/
+    version: 4.83.3 SP1
+    published: '2026-07-31'
+    official: true
+    kind: product-module
+    platform: Inductive Automation Ignition 8.3 (min 8.3.0, latest tested 8.3.8)
+    note: >-
+      Sepasoft warns that upgrading to MES 4.0 from any previous version requires reading
+      the upgrade guide before installing.
+  - name: Sepasoft MES Platform 2 (Ignition 8.1)
+    registry: vendor
+    format: .modl (Ignition module)
+    url: https://www.sepasoft.com/downloads/
+    version: 2.81.0 SP27
+    published: '2023-08-31'
+    official: true
+    kind: product-module
+    lifecycle: end-of-life
+  - name: Sepasoft MES for Ignition 7.9
+    registry: vendor
+    format: .modl (Ignition module)
+    url: https://www.sepasoft.com/downloads/
+    version: 3.79.3 SP3
+    published: '2022-07-08'
+    official: true
+    kind: product-module
+    lifecycle: end-of-life
+notes:
+  - >-
+    A consumer integrating with a Sepasoft-powered gateway calls plain HTTP/SOAP and needs
+    no vendor library, which is a reasonable design for this product - but it also means
+    there is nothing for the sdk_count checks to read, and that is the honest result.

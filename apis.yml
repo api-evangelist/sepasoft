@@ -1,49 +1,149 @@
 aid: sepasoft
 name: Sepasoft
 description: >-
-  A manufacturing execution system (MES) is used to control, track, and document the
-  transformation of raw materials into finished goods in real-time. MES systems are
-  capable of tracking production by the second and, in some cases, less than one second.
+  Sepasoft builds Manufacturing Execution System (MES) software delivered as modules for
+  the Inductive Automation Ignition platform, used to control, track and document the
+  transformation of raw materials into finished goods in real time. The suite spans OEE and
+  downtime tracking, track and trace, ISA-88 batch procedure control, statistical process
+  control, settings and changeover, document management, and ERP integration through the
+  Business Connector (B2MML / ISA-95) and an SAP interface, alongside SepaIQ for analytics,
+  machine learning and LLM features. Its integration surface is the Web Services module,
+  which turns a customer's own Ignition Gateway into a REST and SOAP provider and consumer
+  rather than a hosted API Sepasoft operates.
 type: Index
 accessModel:
-  pricing: freemium
-  onboarding: unknown
+  pricing: paid
+  onboarding: sales
   trial: false
   try_now: false
   public: false
-  label: Freemium
-  confidence: medium
+  label: Commercial
+  confidence: high
   source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
+  - https://www.sepasoft.com/pricing-mes/
+  - https://www.sepasoft.com/pricing-sepaiq/
+  generated: '2026-08-27'
+  method: searched
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sepasoft.png
-tags: []
+tags:
+  - Manufacturing
+  - Manufacturing Execution System
+  - Industrial Automation
+  - OEE
+  - Track and Trace
+  - Batch Processing
+  - Statistical Process Control
+  - ERP Integration
+  - ISA-95
+  - Ignition
 created: '2025-03-01'
-modified: '2026-03-16'
+modified: '2026-08-27'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sepasoft/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
   - aid: sepasoft:sepasoft
-    name: Sepasoft
+    name: Sepasoft Web Services
     description: >-
-      A manufacturing execution system (MES) is used to control, track, and document
-      the transformation of raw materials into finished goods in real-time. MES systems
-      are capable of tracking production by the second and, in some cases, less than
-      one second.
-    humanURL: ' https://www.sepasoft.com/'
-    tags: []
+      The REST and SOAP surface the Sepasoft Web Services module exposes. Endpoints are
+      authored by the operator in the Ignition Designer and served from the customer's own
+      Ignition Gateway, mounted beneath /main/system/ws/rest and /main/system/ws/soap, so
+      the host and port are deployment-specific. GET, POST, PUT and DELETE are supported
+      with JSON or XML responses; provider-side authentication is HTTP Basic against an
+      Ignition User Source with optional role constraints. Sepasoft publishes no
+      machine-readable contract for this surface - the SOAP WSDL is generated at runtime,
+      per endpoint, on the customer's gateway.
+    humanURL: https://docs.sepasoft.com/articles/user-manual/web-services
+    baseURL: https://{ignition-gateway-host}:{port}/main/system/ws/rest
+    tags:
+      - Web Services
+      - REST
+      - SOAP
+      - Manufacturing
+      - MES
     properties:
       - type: Documentation
-        url: ' https://www.sepasoft.com/'
+        url: https://docs.sepasoft.com/articles/user-manual/web-services
+      - type: APIReference
+        url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+      - type: Authentication
+        url: authentication/sepasoft-authentication.yml
+      - type: Conventions
+        url: conventions/sepasoft-conventions.yml
+      - type: ErrorCatalog
+        url: errors/sepasoft-problem-types.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+- type: Website
+  url: https://www.sepasoft.com/
+- type: Documentation
+  url: https://docs.sepasoft.com/
+- type: APIReference
+  url: https://docs.sepasoft.com/articles/user-manual/web-services
+- type: GettingStarted
+  url: https://www.sepasoft.com/learn/
+- type: Support
+  url: https://www.sepasoft.com/support/
+- type: Blog
+  url: https://www.sepasoft.com/blog/
+- type: Pricing
+  url: https://www.sepasoft.com/pricing-mes/
+- type: TermsOfService
+  url: https://www.sepasoft.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.sepasoft.com/privacy-policy/
+- type: ChangeLog
+  url: changelog/sepasoft-changelog.yml
+- type: ReleaseNotes
+  url: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+- type: Lifecycle
+  url: lifecycle/sepasoft-lifecycle.yml
+- type: Authentication
+  url: authentication/sepasoft-authentication.yml
+- type: Conventions
+  url: conventions/sepasoft-conventions.yml
+- type: ErrorCatalog
+  url: errors/sepasoft-problem-types.yml
+- type: Conformance
+  url: conformance/sepasoft-conformance.yml
+- type: Compliance
+  url: security/sepasoft-trust-center.yml
 - type: TrustCenter
   url: security/sepasoft-trust-center.yml
 - type: DomainSecurity
   url: security/sepasoft-domain-security.yml
+- type: Plans
+  url: plans/sepasoft-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sepasoft-rate-limits.yml
+- type: Packages
+  url: packages/sepasoft-packages.yml
+- type: LLMsTxt
+  url: llms/sepasoft-llms.txt
+- type: Vocabulary
+  url: vocabulary/sepasoft-vocabulary.yml
+x-enrichment:
+  date: '2026-08-27'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Sepasoft's public surface was fully readable and was harvested - pricing, release
+    notes, the Web Services REST/SOAP reference, auth model and error semantics all came
+    from the provider's own docs. The one thing that does not exist is a machine-readable
+    contract: Sepasoft ships a module that lets each customer author REST/SOAP endpoints on
+    their own Ignition Gateway, so the WSDL is generated at runtime per deployment and
+    there is no OpenAPI, AsyncAPI, GraphQL SDL or Postman collection to publish.
+  evidence:
+    - url: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+      status: 200
+    - url: https://www.sepasoft.com/openapi.json
+      status: 404
+  checked: '2026-08-27'

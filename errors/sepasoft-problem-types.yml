@@ -1,0 +1,50 @@
+generated: '2026-08-27'
+method: searched
+source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+provider: Sepasoft
+providerId: sepasoft
+format: http-status
+rfc9457: false
+summary: >-
+  The Sepasoft Web Services module documents the HTTP status codes its RESTful endpoint
+  FRAMEWORK returns before or instead of the operator's endpoint script. It defines no
+  error body envelope and no error-code registry, so this catalog is the complete
+  published set — anything richer is authored per deployment by the operator.
+envelope:
+  documented: false
+  media_type: null
+  note: The response body is whatever the operator's Jython handler returns (JSON or XML).
+problem_types:
+  - status: 401
+    title: Authentication required
+    condition: >-
+      HTTP BASIC authentication is enabled on the endpoint resource and credentials are
+      missing from the request.
+    response_detail: Returned with a WWW-Authenticate header.
+    remediation: "Send an Authorization: Basic header with credentials valid in the configured Ignition User Source."
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - status: 403
+    title: Credentials rejected
+    condition: Credentials are present on the request but incorrect for the configured User Source.
+    remediation: Correct the credentials, or confirm the user holds one of the endpoint's Required role(s).
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - status: 405
+    title: Method not implemented on this endpoint
+    condition: No script is defined for the requested HTTP method (do_GET / do_POST / do_PUT / do_DELETE).
+    remediation: Implement the corresponding do_* handler on the endpoint resource, or call a method that is implemented.
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+  - status: 500
+    title: Endpoint script error
+    condition: The endpoint's Jython script has a syntax error (or otherwise fails to execute).
+    remediation: Fix the script in the Designer script editor; check the Gateway logs for the traceback.
+    source: https://docs.sepasoft.com/articles/user-manual/restful-endpoints
+soap_faults:
+  documented: false
+  note: >-
+    SOAP endpoints expose their operations and sample SOAP 1.1/1.2 request/response
+    envelopes through the auto-generated WSDL at ?wsdl, but Sepasoft publishes no
+    fault-code catalog.
+gaps:
+  - No machine-readable error registry (no JSON/CSV/OpenAPI responses) is published.
+  - No RFC 9457 application/problem+json envelope.
+  - No error codes beyond bare HTTP status; no retry guidance.

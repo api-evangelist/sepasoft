@@ -1,0 +1,76 @@
+generated: '2026-08-27'
+method: searched
+source: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+provider: Sepasoft
+providerId: sepasoft
+title: Sepasoft Service Pack (SP) Release Notes
+urls:
+  mes_3_0: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+  mes_4_0: https://docs.sepasoft.com/articles/release-notes-publication/mes-4-0-current-service-pack-sp-release-notes
+  downloads: https://www.sepasoft.com/downloads/
+format: html
+machine_readable: false
+dated: true
+scheme: >-
+  Two parallel lines, one per Ignition platform. Each Service Pack publishes an itemized
+  table of issues keyed on a MES-nnnn ticket id, classified Bug / Improvement / New Feature,
+  tagged by module (Batch, Trace, OEE, ...), with the fix description.
+note: >-
+  The release notes are HTML on the ClickHelp docs portal. A ".md" suffix on the article
+  URL returns the same page as markdown, which is the only machine-readable form available.
+  There is no RSS/Atom feed, no JSON changelog and no per-release permalink beyond the
+  in-page anchors.
+current:
+  mes_3_0:
+    version: 3.81.13 SP1
+    released: '2026-07-31'
+    ignition_line: '8.1'
+  mes_4_0:
+    version: 4.83.3 SP1
+    released: '2026-07-31'
+    ignition_line: '8.3'
+entries:
+  - version: 3.81.13 SP1
+    line: MES Platform 3.0 (Ignition 8.1)
+    date: '2026-07-31'
+    breaking: false
+    highlights:
+      - 'MES-7794 (Bug, Batch): resolved a race condition when saving Batch Control Logics so batch params on tags changing near the end of RUNNING update correctly.'
+      - 'MES-7841 (Bug, Batch/Task-Routing): Phase Manager no longer throws GENERAL_PROTOCOL_EXCEPTION [100] on a Task Routing Visual or Analysis gateway.'
+      - 'MES-7876 (Improvement, Batch/Trace): added Auto Lot Completion to recordOperation and a new Auto_Lot_Completion sub-parameter on Material In.'
+      - 'MES-7907 (Bug, Batch): BatchScript phase scripts now receive the full step itemPath as stepPath.'
+      - 'MES-7929 (Bug, Batch): the latest version of a phase is now pulled into recipes (changesets after Version 1).'
+    source: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+  - version: 3.81.13 SP0
+    line: MES Platform 3.0 (Ignition 8.1)
+    breaking: false
+    note: Published in the same SP release-notes article; itemized in the 3.81.13 SP0 section.
+    source: https://docs.sepasoft.com/articles/release-notes-publication/service-pack-release-notes
+  - version: 4.83.3 SP1
+    line: MES Platform 4.0 (Ignition 8.3)
+    date: '2026-07-31'
+    breaking: false
+    highlights:
+      - 'Carries the same MES-7794 / MES-7841 / MES-7876 / MES-7907 / MES-7916 / MES-7929 fix set as the 3.81.13 SP1 line.'
+      - 'MES-7806 (New Feature, Batch): the Batch List component recipe dropdown became a text box so recipes can be filtered.'
+    source: https://docs.sepasoft.com/articles/release-notes-publication/mes-4-0-current-service-pack-sp-release-notes
+  - version: 4.83.3 SP0
+    line: MES Platform 4.0 (Ignition 8.3)
+    breaking: false
+    source: https://docs.sepasoft.com/articles/release-notes-publication/mes-4-0-current-service-pack-sp-release-notes
+  - version: 4.83.2 RC5
+    line: MES Platform 4.0 (Ignition 8.3)
+    date: '2026-04-30'
+    channel: release-candidate
+    source: https://www.sepasoft.com/downloads/
+  - version: 3.81.13 RC1
+    line: MES Platform 3.0 (Ignition 8.1)
+    date: '2026-02-06'
+    channel: release-candidate
+    source: https://www.sepasoft.com/downloads/
+in_product:
+  name: MES Changelog Viewer
+  description: >-
+    Sepasoft also ships an in-product changelog surface documented as the MES Changelog
+    Viewer, reachable in the Ignition Gateway at Config > MES Modules > Change Log Update.
+  source: https://docs.sepasoft.com/articles/user-manual/mes-changelog-viewer
