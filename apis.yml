@@ -89,6 +89,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+- type: FinOps
+  url: finops/sepasoft-finops.yml
 - type: Website
   url: https://www.sepasoft.com/
 - type: Documentation
