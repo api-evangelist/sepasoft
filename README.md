@@ -1,4 +1,4 @@
-# Sepasoft (sepasoft)
+# Sepasoft
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,43 +64,125 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-A manufacturing execution system (MES) is used to control, track, and document the transformation of raw materials into finished goods in real-time. MES systems are capable of tracking production by the second and, in some cases, less than one second. 
+Sepasoft builds Manufacturing Execution System (MES) software delivered as modules for the Inductive Automation Ignition platform, used to control, track and document the transformation of raw materials into finished goods in real time. The suite spans OEE and downtime tracking, track and trace, ISA-88 batch procedure control, statistical process control, settings and changeover, document management, and ERP integration through the Business Connector (B2MML / ISA-95) and an SAP interface, alongside SepaIQ for analytics, machine learning and LLM features. Its integration surface is the Web Services module, which turns a customer's own Ignition Gateway into a REST and SOAP provider and consumer rather than a hosted API Sepasoft operates.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/sepasoft/refs/heads/main/apis.yml)
+**Areas:** Manufacturing · Manufacturing Execution System · Industrial Automation · OEE · Track and Trace · Batch Processing · Statistical Process Control · ERP Integration · ISA-95 · Ignition
 
-## Scope
+## Sepasoft on APIs.io
 
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+Everything profiled for Sepasoft is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sepasoft/](https://apis.io/providers/sepasoft/)** — or go straight to one of the APIs or properties below.
 
-## Tags:
+### APIs (1)
 
- - API
+- [Sepasoft Web Services](https://apis.io/apis/sepasoft/sepasoft/) — The REST and SOAP surface the Sepasoft Web Services module exposes. Endpoints are authored by the operator in the Ignition Designer and served from the…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01 
-- **Modified:** 2026-03-16 
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### JSON-LD (1)
 
-### Sepasoft
-A manufacturing execution system (MES) is used to control, track, and document the transformation of raw materials into finished goods in real-time. MES systems are capable of tracking production by the second and, in some cases, less than one second. 
+Linked-data contexts for the provider's vocabulary.
 
-**Human URL:** [ https://www.sepasoft.com/]( https://www.sepasoft.com/)
+- [Sepasoft Context](https://apis.io/jsonld/sepasoft/sepasoft-context/)
 
+#### Vocabulary (1)
 
-#### Tags:
+The provider's domain terms, defined.
 
- - API
+- [Sepasoft MES Vocabulary](https://apis.io/vocabularies/sepasoft/sepasoft-vocabulary/)
 
-#### Properties
+#### Security (3)
 
-- [Documentation]( https://www.sepasoft.com/)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Maintainers
+- [Sepasoft Authentication](https://apis.io/security/sepasoft/sepasoft-authentication/)
+- [Sepasoft Domain Security](https://apis.io/security/sepasoft/sepasoft-domain-security/)
+- [Sepasoft Trust Center](https://apis.io/security/sepasoft/sepasoft-trust-center/)
 
-**FN:** Kin Lane
+#### Plans and pricing (1)
 
-**Email:** kin@apievangelist.com
+Published plans, tiers and prices.
+
+- [Sepasoft Plans Pricing](https://apis.io/plans/sepasoft/sepasoft-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Sepasoft Rate Limits](https://apis.io/rate-limits/sepasoft/sepasoft-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Sepasoft Finops](https://apis.io/finops/sepasoft/sepasoft-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.sepasoft.com/)
+- [Documentation](https://docs.sepasoft.com/)
+- [Getting started](https://www.sepasoft.com/learn/)
+- [API reference](https://docs.sepasoft.com/articles/user-manual/web-services)
+- [Pricing](https://www.sepasoft.com/pricing-mes/)
+- [Support](https://www.sepasoft.com/support/)
+- [Blog](https://www.sepasoft.com/blog/)
+- [Terms of service](https://www.sepasoft.com/terms-of-use/)
+- [Privacy policy](https://www.sepasoft.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 44.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 14.7 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 78.9 |
+
+**Agent readiness 10.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sepasoft/](https://apis.io/providers/sepasoft/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sepasoft: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sepasoft/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
