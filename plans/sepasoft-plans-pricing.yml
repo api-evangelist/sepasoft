@@ -1,0 +1,219 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.sepasoft.com/pricing-mes/
+sources:
+- https://www.sepasoft.com/pricing-mes/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: flat-platform
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-28'
+  evidence: Batch Procedure Module Perpetual Server License
+published: true
+note: Quote-builder page listing perpetual license prices per MES module plus percentage-based annual
+  support tiers. Prices stated as estimates in USD excluding taxes; enterprise multi-site pricing via
+  sales contact.
+plan_count: 13
+currency: USD
+plans:
+- name: OEE Downtime Module (Perpetual Site License)
+  price_text: $22,700
+  price: 22700
+  currency: USD
+  period: one-time
+  unit: per physical production site license
+  included_quota: Unlimited OEE calculations per physical production site license.
+- name: Batch Procedure Module (Perpetual Server License)
+  price_text: $35,000
+  price: 35000
+  currency: USD
+  period: one-time
+  unit: per server license
+  included_quota: Unlimited active batch recipes per server license, within a phsyical site.
+- name: Track & Trace Module (Perpetual Site License)
+  price_text: $22,700
+  price: 22700
+  currency: USD
+  period: one-time
+  unit: per physical production site license
+  included_quota: Unlimited active operations per physical production site license.
+- name: SPC Module (Perpetual Site License)
+  price_text: $9,100
+  price: 9100
+  currency: USD
+  period: one-time
+  unit: per physical production site license
+  included_quota: Unlimited sample collection, SPC rule monitoring, sample scheduling and viewing samples
+    in control charts
+- name: Settings & Changeover Module (Perpetual Site License)
+  price_text: $9,100
+  price: 9100
+  currency: USD
+  period: one-time
+  unit: per physical production site license
+  included_quota: Unlimited active recipes per physical production site license.
+- name: Business Connector Module (Perpetual Server License)
+  price_text: $5,400
+  price: 5400
+  currency: USD
+  period: one-time
+  unit: per server
+- name: Interface for SAP ERP Module (Perpetual Server License)
+  price_text: $16,200
+  price: 16200
+  currency: USD
+  period: one-time
+  unit: per server
+- name: Web Services Module (Perpetual Server License)
+  price_text: $5,200
+  price: 5200
+  currency: USD
+  period: one-time
+  unit: per server
+- name: MES Enterprise Central Server (Perpetual Server License)
+  price_text: $14,200
+  price: 14200
+  currency: USD
+  period: one-time
+  unit: per server
+  included_quota: Requires the purchase of at least one site-level MES module
+- name: Redundant / Development / Test Licensing
+  price_text: 50% off retail pricing
+  price: 50
+  period: one-time
+  unit: per module
+- name: PriorityCare Support
+  price_text: +24% annually
+  price: 24
+  period: year
+  unit: '% of license'
+  included_quota: unlimited phone and web portal support during business hours; Upgrade Protection
+- name: TotalCare Support
+  price_text: +20% annually
+  price: 20
+  period: year
+  unit: '% of license'
+  included_quota: unlimited phone and web portal support during business hours; Upgrade Protection
+- name: BasicCare Support
+  price_text: +16% annually
+  price: 16
+  period: year
+  unit: '% of license'
+  included_quota: Web portal support during business hours; Upgrade Protection
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: OEE Downtime Module (Perpetual Site License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Batch Procedure Module (Perpetual Server License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Track & Trace Module (Perpetual Site License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: SPC Module (Perpetual Site License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Settings & Changeover Module (Perpetual Site License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Business Connector Module (Perpetual Server License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Interface for SAP ERP Module (Perpetual Server License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Web Services Module (Perpetual Server License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: MES Enterprise Central Server (Perpetual Server License)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: Redundant / Development / Test Licensing
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+  - name: PriorityCare Support
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
+  - name: TotalCare Support
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
+  - name: BasicCare Support
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
