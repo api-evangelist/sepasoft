@@ -107,18 +107,19 @@ plans:
   unit: '% of license'
   included_quota: Web portal support during business hours; Upgrade Protection
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - subscription
-  units: []
+  units:
+  - period
   plans:
   - name: OEE Downtime Module (Perpetual Site License)
     access: other
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - one-time
   - name: Batch Procedure Module (Perpetual Server License)
@@ -126,7 +127,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - one-time
   - name: Track & Trace Module (Perpetual Site License)
@@ -134,7 +135,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - one-time
   - name: SPC Module (Perpetual Site License)
@@ -142,7 +143,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - one-time
   - name: Settings & Changeover Module (Perpetual Site License)
@@ -150,7 +151,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - one-time
   - name: Business Connector Module (Perpetual Server License)
@@ -198,7 +199,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
   - name: TotalCare Support
@@ -206,7 +207,7 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
   - name: BasicCare Support
@@ -214,6 +215,6 @@ x-canonical:
     model: subscription
     model_how: derived
     units:
-    - other
+    - period
     periods:
     - year
