@@ -107,7 +107,7 @@ plans:
   unit: '% of license'
   included_quota: Web portal support during business hours; Upgrade Protection
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - subscription
